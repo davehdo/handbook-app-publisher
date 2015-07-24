@@ -15,7 +15,7 @@
     <% @docs.each do |doc| %>
       <tr>
         <td><%= doc.fileType %></td>
-        <td><%= doc.meta %></td>
+        <td><%= doc.body.present? %></td>
         <td><%= link_to 'Show', doc %></td>
         <td><%= link_to 'Edit', edit_doc_path(doc) %></td>
         <td><%= link_to 'Destroy', doc, method: :delete, data: { confirm: 'Are you sure?' } %></td>

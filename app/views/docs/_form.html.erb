@@ -11,19 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :fileType %><br>
-    <%= f.text_field :fileType %>
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
-  
-  <%= f.fields_for :meta do |h| %>
-    <div class="field">
-      <%= h.label "attribution" %><br>
-      <%= h.text_field "attribution" %>
-    </div>
-    
-    
-  <% end %>
+ 
+   <div class="form-group">
+    <%= f.label :body %><br>
+    <%= f.text_area :body, class: "form-control", rows: 20 %>
+  </div> 
   
   <div class="actions">
     <%= f.submit %>
