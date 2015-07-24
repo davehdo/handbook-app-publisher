@@ -15,10 +15,16 @@
     <%= f.label :fileType %><br>
     <%= f.text_field :fileType %>
   </div>
-  <div class="field">
-    <%= f.label :meta %><br>
-    <%= f.text_field :meta %>
-  </div>
+  
+  <%= f.fields_for :meta do |h| %>
+    <div class="field">
+      <%= h.label "attribution" %><br>
+      <%= h.text_field "attribution" %>
+    </div>
+    
+    
+  <% end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>

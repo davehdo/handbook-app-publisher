@@ -40,8 +40,10 @@ class DocsController < ApplicationController
   # PATCH/PUT /docs/1
   # PATCH/PUT /docs/1.json
   def update
+
     respond_to do |format|
       if @doc.update(doc_params)
+        
         format.html { redirect_to @doc, notice: 'Doc was successfully updated.' }
         format.json { render :show, status: :ok, location: @doc }
       else
@@ -69,6 +71,6 @@ class DocsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doc_params
-      params.require(:doc).permit(:fileType, :meta)
+      params.require(:doc).permit(:fileType, :meta => [:attribution])
     end
 end
