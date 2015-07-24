@@ -41,14 +41,7 @@
     <div class="row">
       <div class="col-sm-2">
         <div class="well">
-          <h3>File list</h3>
-          <ul>
-            <% Doc.all.each do |doc| %>
-              <li><%= link_to doc.title, doc %></li>
-            <% end %>
-            <li><%= link_to "+ New file", new_doc_path %></li>
-          </ul>
-          
+          <%= render "layouts/workspace_pane" %>
         </div>
       </div>
       <div class="col-sm-10"><%= yield %></div>

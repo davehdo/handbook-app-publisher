@@ -9,7 +9,9 @@ class FoldersController < ApplicationController
 
   # GET /folders/1
   # GET /folders/1.json
+  # disable show in favor of edit
   def show
+    render "edit"
   end
 
   # GET /folders/new
@@ -69,6 +71,6 @@ class FoldersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def folder_params
-      params.require(:folder).permit(:name)
+      params.require(:folder).permit(:title, :parent_id)
     end
 end

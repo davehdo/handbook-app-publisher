@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  resources :folders
-  resources :docs
+  resources :folders do
+    resources :docs
+  end
+    
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'docs#index'
+  root 'folders#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

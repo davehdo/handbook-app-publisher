@@ -1,0 +1,15 @@
+<li><%= link_to folder.title, folder %></li>
+<ul>
+  <% if folder.docs.any? or folder.subfolders.any? %>
+    <% folder.docs.all.each do |doc| %>
+      <li><%= link_to doc.title, [folder, doc] %></li>
+    <% end %>
+    <% folder.subfolders.each do |subfolder| %>
+      <%= render subfolder %>
+    <% end %>
+  <% else %>
+    <li><i>Empty</i></li>
+  <% end %>
+  <li><%= link_to "+ New folder", new_folder_path %></li>
+  <li><%= link_to "+ New file", new_folder_doc_path(folder) %></li>
+</ul>

@@ -7,5 +7,5 @@ class Doc
   field :title
   field :body
   
-
+  embedded_in :folder
 end

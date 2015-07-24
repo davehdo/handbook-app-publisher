@@ -1,6 +1,17 @@
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Library</a></li>
+  <li class="active"><%= @folder.title %></li>
+</ol>
+
 <h1>Editing Folder</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @folder %> |
-<%= link_to 'Back', folders_path %>
+<ul>
+    
+<% @folder.docs.each do |doc| %>
+    <li><%= link_to doc.title, [@folder, doc] %></li>
+<% end %>
+
+</ul>

@@ -7,3 +7,5 @@
 <h1>Editing Document</h1>
 
 <%= render 'form' %>
+
+<%= link_to 'Destroy', [@folder, @doc], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %>

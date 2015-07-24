@@ -11,11 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
+  
+  <div class="form-group">
+    <%= f.label :parent_id, "Parent folder" %><br>
+    <%= f.select :parent_id, (Folder.all - [@folder]).collect {|e| [e.title, e.id]}, {include_blank: "None"} %>
+  </div>
+  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save", class: "btn btn-primary" %>
   </div>
 <% end %>
