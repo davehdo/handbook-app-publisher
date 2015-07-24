@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Filetype:</strong>
+  <%= @doc.fileType %>
+</p>
+
+<p>
+  <strong>Meta:</strong>
+  <%= @doc.meta %>
+</p>
+
+<%= link_to 'Edit', edit_doc_path(@doc) %> |
+<%= link_to 'Back', docs_path %>
