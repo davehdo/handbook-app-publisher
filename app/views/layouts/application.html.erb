@@ -41,11 +41,12 @@
     <div class="row">
       <div class="col-sm-2">
         <div class="well">
+          <h3>File list</h3>
           <ul>
             <% Doc.all.each do |doc| %>
-              <li><%= doc.title %></li>
+              <li><%= link_to doc.title, doc %></li>
             <% end %>
-            
+            <li><%= link_to "+ New file", new_doc_path %></li>
           </ul>
           
         </div>

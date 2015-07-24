@@ -3,14 +3,18 @@
 %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Filetype:</strong>
-  <%= @doc.fileType %>
-</p>
+<ol class="breadcrumb">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Library</a></li>
+  <li class="active"><%= @doc.title %></li>
+</ol>
+
+<%= link_to 'Edit', edit_doc_path(@doc), class: "pull-right" %>
+
+<h1><%= @doc.title %></h1>
 
 <div class="well">
   <%= raw markdown.render( @doc.body  || "") %>
 </div>
 
-<%= link_to 'Edit', edit_doc_path(@doc) %> |
-<%= link_to 'Back', docs_path %>
+
