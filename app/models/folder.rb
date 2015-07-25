@@ -22,10 +22,14 @@ class Folder
     end
   end
   
+  # returns the folders
   def descendants
     self.subfolders.collect do |s|
       [s] + s.descendants
     end.flatten
   end
   
+  def descendant_docs
+    ([self] + descendants).collect {|e| e.docs }.flatten.uniq
+  end
 end
