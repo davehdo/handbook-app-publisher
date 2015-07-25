@@ -1,17 +1,17 @@
 <ol class="breadcrumb">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Library</a></li>
-  <li class="active"><%= @folder.title %></li>
+  <% @folder.ancestors.reverse.each do |f| %>
+  <li><%= link_to fa_icon( "folder", text: f.title), f %></li>
+  <% end %>
+  <li class="active"><%= fa_icon "folder-open" %> <%= @folder.title %></li>
 </ol>
-
-<h1>Editing Folder</h1>
 
 <%= render 'form' %>
 
-<ul>
-    
-<% @folder.docs.each do |doc| %>
-    <li><%= link_to doc.title, [@folder, doc] %></li>
-<% end %>
-
+<h3>Folders</h3>
+<ul class="nav nav-stacked">
+<%= render @folder.subfolders %>
+</ul>
+<h3>Documents</h3>
+<ul class="nav nav-stacked">
+<%= render @folder.docs %>
 </ul>

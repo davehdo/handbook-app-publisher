@@ -46,3 +46,5 @@ end
 gem "mongoid", "~> 4.0.0"
 
 gem "redcarpet"
+
+gem "font-awesome-rails"

@@ -18,7 +18,7 @@
   
   <div class="form-group">
     <%= f.label :parent_id, "Parent folder" %><br>
-    <%= f.select :parent_id, (Folder.all - [@folder]).collect {|e| [e.title, e.id]}, {include_blank: "None"} %>
+    <%= f.select :parent_id, (Folder.all - [@folder] - @folder.descendants).collect {|e| [e.full_path, e.id]}, {include_blank: "None"}, class: "form-control" %>
   </div>
   
   <div class="actions">

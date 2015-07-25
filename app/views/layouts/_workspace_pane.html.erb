@@ -1,6 +1,31 @@
 <h3>File list</h3>
-<ul>
-  <%= render Folder.top_level %>
-  <li><%= link_to "+ New folder", new_folder_path %></li>
+
+<style>
+  .file-navigation-tree li {
+    list-style-type: none;
+  }
+  
+  ul.file-navigation-tree {
+    padding-left: 0px;
+  }
+  
+  .file-navigation-tree ul {
+    padding-left: 12px;
+  }
+</style>
+
+<ul class="file-navigation-tree">
+  <% Folder.top_level.each do |subfolder| %>
+      <% if @folder and !@folder.new_record? and (@folder == subfolder or @folder.ancestors.include?(subfolder)) %>
+        <%= render "folders/folder_tree", folder: subfolder %>
+      <% else %>
+        <%= render subfolder %>
+      <% end %>
+  <% end %>
+  <hr />
+  <li><%= link_to fa_icon( "plus", text: "Folder"), new_folder_path %></li>
+  <% if @folder and !@folder.new_record? %>
+    <li><%= link_to fa_icon( "plus", text: "File"), new_folder_doc_path(@folder) %></li>
+  <% end %>
 </ul>
           

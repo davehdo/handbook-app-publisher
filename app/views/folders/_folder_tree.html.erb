@@ -1,0 +1,15 @@
+<li><%= link_to fa_icon( "folder-open", text: folder.title), folder %></li>
+<ul>
+  <% if folder.docs.any? or folder.subfolders.any? %>
+    <% folder.subfolders.each do |subfolder| %>
+      <% if @folder and !@folder.new_record? and (@folder == subfolder or @folder.ancestors.include?(subfolder)) %>
+        <%= render "folders/folder_tree", folder: subfolder %>
+      <% else %>
+        <%= render subfolder %>
+      <% end %>
+    <% end %>
+    <%= render folder.docs.all %>
+  <% else %>
+    <li><i>Empty</i></li>
+  <% end %>
+</ul>

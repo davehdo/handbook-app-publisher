@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :folders do
-    resources :docs
+    resources :docs, except: [:index]
   end
     
   # The priority is based upon order of creation: first created -> highest priority.

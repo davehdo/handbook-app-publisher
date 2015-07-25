@@ -8,4 +8,10 @@ class Doc
   field :body
   
   embedded_in :folder
+  
+  validates_presence_of :title
+  
+  def ancestors
+    [folder] + folder.ancestors
+  end
 end
