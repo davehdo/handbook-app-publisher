@@ -1,17 +1,19 @@
-<ol class="breadcrumb">
-  <% @folder.ancestors.reverse.each do |f| %>
-  <li><%= link_to fa_icon( "folder", text: f.title), f %></li>
-  <% end %>
-  <li class="active"><%= fa_icon "folder-open" %> <%= @folder.title %></li>
-</ol>
+<%= render "breadcrumbs" %>
 
-<%= render 'form' %>
+<ul class="nav nav-stacked">
+  <%= render @folder.subfolders %>
+  <%= render @folder.docs %>
+</ul>
 
-<h3>Folders</h3>
-<ul class="nav nav-stacked">
-<%= render @folder.subfolders %>
+
+<ul class="nav nav-pills">
+  <li><%= link_to fa_icon( "plus", text: "New Folder"), new_folder_path %></li>
+  <li><%= link_to fa_icon( "plus", text: "New File"), new_folder_doc_path(@folder) %></li>
 </ul>
-<h3>Documents</h3>
-<ul class="nav nav-stacked">
-<%= render @folder.docs %>
-</ul>
+
+<hr />
+<div>
+  <h3>Edit or move this folder</h3>
+  <%= render 'form' %>
+</div>
+

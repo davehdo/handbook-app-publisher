@@ -1,20 +1,20 @@
 <%
   markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, {})
 %>
-<ol class="breadcrumb">
-  <% @doc.ancestors.reverse.each do |f| %>
-  <li><%= link_to fa_icon( "folder", text: f.title), f %></li>
-  <% end %>
-  <li class="active"><%= fa_icon "file-o" %> <%= @doc.title %></li>
-</ol>
+<%= render "folders/breadcrumbs" %>
 
 <p id="notice"><%= notice %></p>
 
+<ul class="nav nav-stacked">
+  <li><%= link_to fa_icon("arrow-up", text: "Back to #{@doc.folder.title}"), @doc.folder %></li>
+</ul>
 
 
-<%= link_to 'Edit', edit_folder_doc_path(@folder, @doc), class: "pull-right" %>
+<hr />
 
-<h1><%= @doc.title %></h1>
+<%= link_to 'Edit', edit_folder_doc_path(@doc.folder, @doc), class: "pull-right" %>
+
+<h3><%= @doc.title %></h3>
 
 <div class="well">
   <%= raw markdown.render( @doc.body  || "") %>

@@ -1,11 +1,6 @@
-<ol class="breadcrumb">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Library</a></li>
-  <li class="active"><%= @doc.title %></li>
-</ol>
-
-<h1>Editing Document</h1>
+<%= render "folders/breadcrumbs" %>
+<h3>Editing Document</h3>
 
 <%= render 'form' %>
-
-<%= link_to 'Destroy', [@folder, @doc], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning" %>
+<br />
+<%= link_to 'Destroy', [@folder, @doc], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
