@@ -22,10 +22,5 @@
         <%= render subfolder %>
       <% end %>
   <% end %>
-  <hr />
-  <li><%= link_to fa_icon( "plus", text: "Folder"), new_folder_path %></li>
-  <% if @folder and !@folder.new_record? %>
-    <li><%= link_to fa_icon( "plus", text: "File"), new_folder_doc_path(@folder) %></li>
-  <% end %>
 </ul>
           

@@ -6,7 +6,7 @@
 <p id="notice"><%= notice %></p>
 
 <ul class="nav nav-stacked">
-  <li><%= link_to fa_icon("arrow-up", text: "Back to #{@doc.folder.title}"), @doc.folder %></li>
+  <li><%= link_to fa_icon("arrow-left", text: "Back to #{@doc.folder.title}"), @doc.folder %></li>
 </ul>
 
 
@@ -16,7 +16,7 @@
 
 <h3><%= @doc.title %></h3>
 
-<div class="well">
+<div>
   <%= raw markdown.render( @doc.body  || "") %>
 </div>
 

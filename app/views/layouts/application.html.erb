@@ -22,18 +22,17 @@
       <a class="navbar-brand" href="<%= root_path %>">Agile Content Editor</a>
     </div>
 
-    <% if false %>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-        
+        <li><%= link_to "New Folder", new_folder_path %></li>
+        <% if @folder and !@folder.new_record? %>
+          <li><%= link_to "New File", new_folder_doc_path(@folder) %></li>
+        <% end %>
+
       </ul>
-      
     </div><!-- /.navbar-collapse -->
-    <% end %>
-    
+
   </div><!-- /.container-fluid -->
 </nav>
   

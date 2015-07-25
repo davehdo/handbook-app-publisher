@@ -6,14 +6,10 @@
 </ul>
 
 
-<ul class="nav nav-pills">
-  <li><%= link_to fa_icon( "plus", text: "New Folder"), new_folder_path %></li>
-  <li><%= link_to fa_icon( "plus", text: "New File"), new_folder_doc_path(@folder) %></li>
-</ul>
 
 <hr />
 <div>
-  <h3>Edit or move this folder</h3>
+  <h3>Rename or move this folder</h3>
   <%= render 'form' %>
 </div>
 
