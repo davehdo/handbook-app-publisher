@@ -3,7 +3,8 @@
 %>
 
 <ul class="nav nav-pills pull-right" style="font-size: 0.8em; ">
-  <li><%= link_to 'Edit', edit_folder_doc_path(@doc.folder, @doc), class: "pull-right" %></li>
+  <li><%= link_to 'Edit', edit_folder_doc_path(@doc.folder, @doc) %></li>
+  <li><%= link_to 'Destroy', folder_doc_path(@doc.folder, @doc), method: :delete, data: { confirm: "Are you sure you want to delete the document '#{@doc.title}'?" } %></li>
 </ul>
 
 <%= render "folders/breadcrumbs" %>

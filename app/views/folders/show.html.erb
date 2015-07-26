@@ -11,6 +11,10 @@
 <p id="notice"><%= notice %></p>
 
 <ul id="folder-contents" class="nav nav-stacked">
-  <%= render @folder.subfolders %>
-  <%= render @folder.docs %>
+  <% if @folder.docs.any? or @folder.subfolders.any? %>
+    <%= render @folder.subfolders %>
+    <%= render @folder.docs %>
+  <% else %>
+    <i class="text-muted">Empty folder</i>
+  <% end %>
 </ul>
