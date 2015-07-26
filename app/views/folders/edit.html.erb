@@ -1,13 +1,9 @@
-<%= render "breadcrumbs" %>
-
-<ul class="nav nav-stacked">
-  <%= render @folder.subfolders %>
-  <%= render @folder.docs %>
+<ul class="nav nav-pills pull-right" style="font-size: 0.8em; ">
+  <li><%= link_to "Show contents", @folder %></li>
 </ul>
 
+<%= render "breadcrumbs" %>
 
-
-<hr />
 <div>
   <h3>Rename or move this folder</h3>
   <%= render 'form' %>

@@ -1,9 +1,16 @@
+<ul class="nav nav-pills pull-right" style="font-size: 0.8em; ">
+  <li><%= link_to "New Folder", new_subfolder_folder_path(@folder) %></li>
+  <li><%= link_to "New File", new_folder_doc_path(@folder) %></li>
+  <li><%= link_to "Rename", edit_folder_path(@folder) %></li>
+  <li><%= link_to "Move", edit_folder_path(@folder) %></li>
+  <li><%= link_to 'Destroy', @folder, method: :delete, data: { confirm: "Are you sure you want to delete the folder '#{@folder.title}', its #{@folder.descendants.size} subfolders and #{@folder.descendant_docs.size} documents?" } %></li>
+</ul>
+
+<%= render "breadcrumbs" %>
+
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @folder.name %>
-</p>
-
-<%= link_to 'Edit', edit_folder_path(@folder) %> |
-<%= link_to 'Back', folders_path %>
+<ul id="folder-contents" class="nav nav-stacked">
+  <%= render @folder.subfolders %>
+  <%= render @folder.docs %>
+</ul>

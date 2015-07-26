@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   resources :folders do
     resources :docs, except: [:index]
+    
+    member do 
+      get "new_subfolder"  
+    end
+    
   end
     
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,18 +1,14 @@
 <%
   markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, {})
 %>
+
+<ul class="nav nav-pills pull-right" style="font-size: 0.8em; ">
+  <li><%= link_to 'Edit', edit_folder_doc_path(@doc.folder, @doc), class: "pull-right" %></li>
+</ul>
+
 <%= render "folders/breadcrumbs" %>
 
 <p id="notice"><%= notice %></p>
-
-<ul class="nav nav-stacked">
-  <li><%= link_to fa_icon("arrow-left", text: "Back to #{@doc.folder.title}"), @doc.folder %></li>
-</ul>
-
-
-<hr />
-
-<%= link_to 'Edit', edit_folder_doc_path(@doc.folder, @doc), class: "pull-right" %>
 
 <h3><%= @doc.title %></h3>
 

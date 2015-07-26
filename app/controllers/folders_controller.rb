@@ -1,6 +1,10 @@
 class FoldersController < ApplicationController
-  before_action :set_folder, only: [:show, :edit, :update, :destroy]
+  before_action :set_folder, only: [:show, :edit, :update, :destroy, :new_subfolder]
 
+  def new_subfolder
+    @subfolder = @folder.subfolders.build
+  end
+  
   # GET /folders
   # GET /folders.json
   def index
@@ -11,7 +15,6 @@ class FoldersController < ApplicationController
   # GET /folders/1.json
   # disable show in favor of edit
   def show
-    render "edit"
   end
 
   # GET /folders/new
@@ -56,9 +59,18 @@ class FoldersController < ApplicationController
   # DELETE /folders/1
   # DELETE /folders/1.json
   def destroy
+    @parent = @folder.parent
+    
+    # destroy descendant folders
+    @folder.descendants.each {|e| e.destroy}
+    
+    # destruction of descendant documents is automatic because embedded
+    
+    # destroy the folder itself
     @folder.destroy
+    
     respond_to do |format|
-      format.html { redirect_to folders_url, notice: 'Folder was successfully destroyed.' }
+      format.html { redirect_to @parent ? @parent : folders_url, notice: 'Folder was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
