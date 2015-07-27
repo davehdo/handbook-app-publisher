@@ -1,6 +1,8 @@
 class Folder
   include Mongoid::Document
   field :title, type: String
+  field :attribution
+  field :keywords
   # field :folder_id, type: ObjectId
   embeds_many :docs
   has_many :subfolders, class_name: "Folder", inverse_of: :parent

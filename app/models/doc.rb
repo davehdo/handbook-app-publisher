@@ -2,7 +2,7 @@ class Doc
   include Mongoid::Document
   field :fileType, type: String
   field :versionId, type: String
-  field :attribution
+  field :attribution # i.e. author
   field :keywords
   field :title
 
