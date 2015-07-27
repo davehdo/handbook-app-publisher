@@ -11,17 +11,100 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :title %><br>
-    <%= f.text_field :title, class: "form-control" %>
+    <div class="form-group">
+      <%= f.label :title, "Document title" %><br>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+
+
+  <%= f.fields_for :sections do |g| %>
+  <div class="panel panel-default">
+    <div class="panel-heading clearfix" style="padding: 0px; ">
+      <ul class="nav nav-pills pull-right" style="font-size: 0.8em; ">
+        <li><%= link_to "Save", "#", class: "bind-doc-save" %></li>
+        <li><%= link_to 'Destroy', "#", class: "bind-section-destroy" %></li>
+      </ul>
+      <%= g.text_field :title, placeholder: "Section title", style: "font-size: 1.4em; width: 500px; border: 0px; padding: 6px 12px; background-color: transparent;" %>
+    </div>
+    <div class="panel-body" style="padding: 0px; ">
+      
+      <%= g.text_area :content, placeholder: "Section content", style: "width: 100%; border: 0px; padding: 12px; ", rows: 12 %>
+    </div>
+    
+    <%# a second version of the panel, for when marked to be destroyed %>
+    <div class="panel-heading clearfix" style="padding: 0px; display:none;">
+      <ul class="nav nav-pills pull-right" style="font-size: 0.8em; ">
+        <li><%= link_to 'Recover', "#", class: "bind-section-recover" %></li>
+      </ul>
+      <span style="font-size: 1.4em; padding: 6px 12px;"><%= g.object.title  %></span>
+    </div>
+    <div class="panel-body" style="display:none;">
+      <p>This section shall be destroyed upon saving</p>
+    </div>
+
+    
+    <%= g.hidden_field :_destroy %>
   </div>
- 
-   <div class="form-group">
-    <%# f.label :body, "" %>
-    <%= f.text_area :body, class: "form-control", rows: 30 %>
-  </div> 
+
+  <% end %>
   
   <div class="actions">
     <%= f.submit "Save", class: "btn btn-primary" %> 
   </div>
 <% end %>
+
+<script type="text/javascript">
+
+  var section = new function() {
+    this.destroy = function(event) {
+      var o = $(event.target).closest(".panel")
+      o.addClass("marked-for-destruction")
+      o.children("[class^='panel-']").toggle(100)
+      o.find("[id$='_destroy']").val("1")
+      event.preventDefault();
+      false
+    }
+    
+    this.recover = function(event) {
+      var o = $(event.target).closest(".panel")
+      o.removeClass("marked-for-destruction")
+      o.children("[class^='panel-']").toggle(100)
+      o.find("[id$='_destroy']").val("0")
+      event.preventDefault();
+      false
+    }
+  }
+  
+  var doc = new function() {
+    this.markAsUnsaved = function() {
+        
+    }
+    
+    this.markAsSaved = function() {
+      
+    }
+    
+    this.save = function(event) {
+      
+      var form = $('form[class$="_doc"]')
+      
+      $.ajax({
+        type: "POST",
+        url: form.attr("action"),
+        data: form.serialize(),
+        success: function() { 
+          console.log("Saved")
+        
+        },
+        
+      });
+
+      event.preventDefault();
+    }
+    
+  }
+  
+  $(".bind-doc-save").click( doc.save )
+  $(".bind-section-destroy").click( section.destroy )
+  $(".bind-section-recover").click( section.recover )
+</script>

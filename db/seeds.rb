@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+3.times do |n|
+    mod = Folder.create(title: "Module #{n}")
+    3.times do |m|
+        fold = mod.subfolders.create(title: "Folder #{m}")
+        3.times do |o|
+           fold.docs.create(title: "Document #{o}") 
+        end
+    end
+end

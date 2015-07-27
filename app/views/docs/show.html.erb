@@ -13,8 +13,15 @@
 
 <h3><%= @doc.title %></h3>
 
-<div>
-  <%= raw markdown.render( @doc.body  || "") %>
-</div>
+<% @doc.sections.each do |section| %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <%= section.title %>
+    </div>
+    <div class="panel-body">
+      <%= raw markdown.render( section.content  || "") %>
+    </div>
+  </div>
 
+<% end %>
 

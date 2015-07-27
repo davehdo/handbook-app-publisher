@@ -18,11 +18,13 @@ class DocsController < ApplicationController
   # (updated to nest inside folder)
   def new
     @doc = Doc.new
+    8.times {@doc.sections.build}
   end
 
   # GET /docs/1/edit
   # (updated to nest inside folder)
   def edit
+    (8 - @doc.sections.size).times {@doc.sections.build}
   end
 
   # POST /docs
@@ -46,7 +48,6 @@ class DocsController < ApplicationController
   # PATCH/PUT /docs/1.json
   # (updated to nest inside folder)
   def update
-
     respond_to do |format|
       if @doc.update(doc_params)
         
@@ -82,6 +83,6 @@ class DocsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def doc_params
-      params.require(:doc).permit(:fileType, :title, :body)
+      params.require(:doc).permit(:fileType, :title, :sections_attributes => [:id, :title, :content, :_destroy])
     end
 end
