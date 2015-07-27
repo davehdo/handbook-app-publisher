@@ -24,4 +24,4 @@ json.rel do
     json.embedded []
 end
 
-json.url url_for([@doc.folder, @doc])
+json.url url_for(@doc)
