@@ -10,7 +10,10 @@
     3.times do |m|
         fold = mod.subfolders.create(title: "Folder #{m}")
         3.times do |o|
-           fold.docs.create(title: "Document #{o}") 
+           doc = fold.docs.create(title: "Document #{o}") 
+           3.times do |p|
+              doc.sections.create(title: "Section #{p}", content: "Lots of great content") 
+           end
         end
     end
 end

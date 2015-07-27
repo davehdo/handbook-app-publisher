@@ -13,9 +13,14 @@ json.meta do
     json.title @doc.title
 end
 
+
+markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, {})
+
+
 json.data do
     json.sections @doc.sections do |section|
-        json.extract! section, :title, :content
+        json.title section.title
+        json.content (markdown.render( section.content  || ""))
     end
 end
 
