@@ -26,5 +26,14 @@ module Workspace
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     # config.active_record.raise_in_transactional_callbacks = true
+    
+    # allow CORS https://github.com/cyu/rack-cors
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get]
+      end
+    end
+    
   end
 end
