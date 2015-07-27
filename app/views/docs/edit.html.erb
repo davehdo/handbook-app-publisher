@@ -1,7 +1,7 @@
 
 <ul class="nav nav-pills pull-right" style="font-size: 0.8em; ">
-  <li><%= link_to 'Cancel', folder_doc_path(@doc.folder, @doc), data: { confirm: "Are you sure you want to cancel, losing all unsaved changes?" } %></li>
-  <li><%= link_to 'Destroy', folder_doc_path(@doc.folder, @doc), method: :delete, data: { confirm: "Are you sure you want to delete the document '#{@doc.title}'?" } %></li>
+  <li><%= link_to 'Cancel', @doc, data: { confirm: "Are you sure you want to cancel, losing all unsaved changes?" } %></li>
+  <li><%= link_to 'Destroy', @doc, method: :delete, data: { confirm: "Are you sure you want to delete the document '#{@doc.title}'?" } %></li>
 </ul>
 
 <%= render "folders/breadcrumbs" %>

@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   resources :folders do
-    resources :docs, except: [:index]
-    
+    resources :docs, only: [:new, :create]
+
     member do 
       get "new_subfolder"  
     end
-    
   end
     
+  resources :docs, except: [:index, :new, :create]
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
